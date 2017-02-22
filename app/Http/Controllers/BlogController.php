@@ -16,6 +16,9 @@ class BlogController extends Controller
 	protected $limit = 3;
 
     public function index(){
+
+    	return view('welcome');
+    	
     	$posts = Post::with('author')->latestFirst()->published()->simplepaginate($this->limit);
     	$categories = Category::with(['posts'=>function($query){
     		$query->published();
